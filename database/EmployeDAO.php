@@ -1,5 +1,5 @@
 <?php
-require_once('./DAO');
+require_once('DAO.php');
 
 class EmployeDAO extends DAO
 {
@@ -15,58 +15,33 @@ class EmployeDAO extends DAO
         $hour_price = $employe->getHourPrice();
         $monthly_salary = $employe->getMonthlySalary();
 
-        $query = "INSERT INTO employe(cpf_number, card_id, first_name, last_name, phone_number, email, password, hour_price, monthly_salary) VALUES
-                    (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO employes(cpf_number, card_id, first_name, last_name, phone_number, email, password, hour_price, monthly_salary) VALUES
+                    ('{$cpf_number}', '{$card_id}', '{$first_name}', '{$last_name}', '{$phone_number}', '{$email}', '{$password}', '{$hour_price}', '{$monthly_salary}')";
+
+        return mysqli_query($this->connection->getConnection(), $query);
         
-        $stmt = mysqli_prepare(this->connection->getConnection(), $query);
-        mysqli_stmt_bind_param($stmt, 'sssssssdd', $cpf_number, $card_id, $first_name, $last_name, $phone_number, $email, $password, $hour_price, $monthly_salary);
-
-        $result = mysqli_stmt_execute($stmt); 
-        mysqli_stmt_close($stmt);
-
-        return $result;
     }
 
-    //[TODO]
-    public function retrieve(Employe $employe)
+    public function retrieve()
     {
-        $query = "SELECT * from employe";
+        $query = "SELECT * from employes";
+
+        $employes = array();
+        $result = mysqli_query($this->connection->getConnection(), $query);
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            array_push($employes, $row);
+        }
         
-        $stmt = mysqli_prepare(this->connection->getConnection(), $query);
-        
-        // if(mysqli_stmt_execute($stmt)){
-        //     $result = mysqli_stmt_get_result($stmt);
-
-        //     if(mysqli_num_rows($result) == 1){
-        //         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                
-        //         $id_employe = $row["id_employe"];
-        //         $cpf_number = $row["cpf_number"];
-        //         $card_id = $row["card_id"];
-        //         $first_name = $row["first_name"];
-        //         $last_name = $row["last_name"];
-        //         $phone_number = $row["phone_number"];
-        //         $email = $row["email"];
-        //         $password = $row["password"];
-        //         $hour_price = $row["hour_price"];
-        //         $monthly_salary = $row["monthly_salary"];
-
-        //     }
-
-        // }
+        return $employes;
     }
 
     public function find(int $id_employe)
     {
-        $query = "SELECT * FROM employe WHERE id_employe = ?";
-        
-        $stmt = mysqli_prepare(this->connection->getConnection(), $query);
-        mysqli_stmt_bind_param($stmt, 'i', $id_employe);
-
-        $result = mysqli_stmt_execute($stmt); 
-        mysqli_stmt_close($stmt);
-
-        return $result;
+        $query = "SELECT * FROM employes WHERE id_employe = '{$id_employe}'";
+       
+        $result = mysqli_query($this->connection->getConnection(), $query);
+        return mysqli_fetch_assoc($result);
     }
 
     public function update(Employe $employe)
@@ -82,15 +57,9 @@ class EmployeDAO extends DAO
         $hour_price = $employe->getHourPrice();
         $monthly_salary = $employe->getMonthlySalary();
 
-        $query = "UPDATE employe SET cpf_number = ?, card_id = ?, first_name = ?, last_name = ?, phone_number = ?, email = ?, password = ?, hour_price = ?, monthly_salary = ? WHERE id_employe = ?";
-        
-        $stmt = mysqli_prepare(this->connection->getConnection(), $query);
-        mysqli_stmt_bind_param($stmt, 'sssssssddi', $cpf_number, $card_id, $first_name, $last_name, $phone_number, $email, $password, $hour_price, $monthly_salary, $id_employe);
-
-        $result = mysqli_stmt_execute($stmt); 
-        mysqli_stmt_close($stmt);
-
-        return $result;
+        $query = "UPDATE employes SET cpf_number = '{$cpf_number}', card_id = '{$card_id }', first_name = '{$first_name}', last_name = '{$last_name }', phone_number = '{$phone_number}', email = '{$email}', password = '{$password}', hour_price = '{$hour_price}', monthly_salary = '{$monthly_salary}' WHERE id_employe = '{$id_employe }'";
+     
+        return mysqli_query($this->connection->getConnection(), $query);
     }
 
 }

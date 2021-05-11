@@ -86,27 +86,27 @@ class Employe {
         return $this->password;
     }
 
-    public function setPassword(string $email) : void
+    public function setPassword(string $password) : void
     {
         $this->password = $password;
     }
     
-    public function getHourPrice() : decimal
+    public function getHourPrice() : string
     {
         return $this->hour_price;
     }
 
-    public function setHourPrice(decimal $hour_price) : void
+    public function setHourPrice(string $hour_price) : void
     {
         $this->hour_price = $hour_price;
     }
 
-    public function getMonthlySalary() : decimal
+    public function getMonthlySalary() : string
     {
         return $this->monthly_salary;
     }
 
-    public function setMonthlySalary(decimal $monthly_salary) : void
+    public function setMonthlySalary(string $monthly_salary) : void
     {
         $this->monthly_salary = $monthly_salary;
     }

@@ -1,5 +1,5 @@
 <?php 
-require_once('./DAO');
+require_once('DAO.php');
 
 class TimeSheetDAO extends DAO
 {
@@ -9,12 +9,12 @@ class TimeSheetDAO extends DAO
         $note = $time_sheet->getNote();
         $id_employe = $time_sheet->getIDEmploye();
 
-        $query = "INSERT INTO time_sheet(clock_in, note, id_employe,) VALUES ('{$clock_in}', '{$note}', '{$id_employe}')";
+        $query = "INSERT INTO time_sheet(clock_in, note, id_employe) VALUES ('{$clock_in}', '{$note}', '{$id_employe}')";
         
         return mysqli_query($this->connection->getConnection(), $query);
     }
 
-    public function retriever()
+    public function retrieve()
     {
         $query = "SELECT * FROM time_sheet";
 
@@ -49,7 +49,7 @@ class TimeSheetDAO extends DAO
     public function delete(int $id_time_sheet)
     {
         $query = "DELETE FROM time_sheet WHERE id_time_sheet = '{$id_time_sheet}'";
-        
+
         return mysqli_query($this->connection->getConnection(), $query);
     }
 }

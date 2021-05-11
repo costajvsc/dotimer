@@ -15,7 +15,7 @@ class Connection
 
     private function startConnection()
     {
-        $this->connection = mysqli_connection(
+        $this->connection = mysqli_connect(
             $this->host,
             $this->username,
             $this->password,

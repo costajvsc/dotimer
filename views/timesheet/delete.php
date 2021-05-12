@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require_once('../layout/_head.php'); ?>
-    <title>Dotimer - Show TimeSheet</title>
+    <title>Dotimer - Delete TimeSheet</title>
 
     <?php 
         session_start();
@@ -18,7 +18,9 @@
     </header>
 
     <main class="container">
-        <h1>Show Time Sheet <?= $time_sheet["id_time_sheet"] ?></h1>
+        <h1>Delete Time Sheet <?= $time_sheet["id_time_sheet"] ?></h1>
+
+        <h3>Do you want delete this time sheet? All data <span class="text-danger">are will lose</span>.</h3>
 
         <h4>Employe</h4>
         <h5 class="font-weight-normal mb-3"><?= $time_sheet["id_employe"] ?></h5>
@@ -30,16 +32,12 @@
         <h5 class="font-weight-normal mb-3"><?= $time_sheet["note"] ?></h5>
 
         <div class="d-flex justify-content-end mb-3">
-            <a href="/dotimer/views/timesheet" class="btn btn-outline-info mr-2">
+            <a href="/dotimer/views/timesheet" class="btn btn-info mr-2">
                 <i class="fas fa-list"></i> List time sheet
             </a>
-            <form class="d-inline" method="post" action="/dotimer/controllers/timesheet/edit.php">
+            <form class="d-inline" method="post" action="/dotimer/controllers/timesheet/destroy.php">
                 <input type="hidden" name="id_time_sheet" value="<?= $time_sheet['id_time_sheet'] ?>"> 
-                <button type="submit" class="btn btn-outline-warning mr-2"> <i class="fas fa-edit mr-2"></i> Edit Time Sheet </button>
-            </form>
-            <form class="d-inline" method="post" action="/dotimer/controllers/timesheet/delete.php">
-                <input type="hidden" name="id_time_sheet" value="<?= $time_sheet['id_time_sheet'] ?>"> 
-                <button type="submit" class="btn btn-outline-danger"> <i class="fas fa-trash mr-2"></i> Delete Time Sheet </button>
+                <button type="submit" class="btn btn-outline-danger"> <i class="fas fa-trash mr-2"></i> Destroy Time Sheet </button>
             </form>
         </div>
 

@@ -16,7 +16,7 @@
                 </li>
             </ul>
         </div>
-        <form class="form-inline">
+        <form class="form-inline" method="post" action="/dotimer/controllers/user/logout.php">
             <button class="btn btn-sm btn-outline-danger my-2 my-sm-0" type="submit"> <i class="fas fa-sign-out-alt"></i> Logout</button>
         </form>
     </nav>

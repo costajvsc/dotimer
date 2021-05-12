@@ -1,3 +1,4 @@
+<?php require_once('../layout/_auth.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +9,6 @@
     <title>Dotimer - Edit User</title>
 
     <?php 
-        session_start();
         $user = $_SESSION["user"];
     ?>
 

@@ -52,5 +52,16 @@ class UserDAO extends DAO
 
         return mysqli_query($this->connection->getConnection(), $query);
     }
+
+    public function tryLogin(User $user)
+    {
+        $email = $user->getEmail();
+        $password = $user->getPassword();
+
+        $query = "SELECT * FROM users WHERE email = '{$email}' AND password = '{$password}'";
+
+        $result = mysqli_query($this->connection->getConnection(), $query);
+        return mysqli_fetch_assoc($result);
+    }
 }
 ?>

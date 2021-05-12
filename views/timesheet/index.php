@@ -38,7 +38,7 @@
                 <?php foreach($time_sheet as $t): ?>  
                 <tr>
                     <th scope="row">  <?= $t['id_time_sheet'] ?> </th>
-                    <td>  <?= $t['clock_in'] ?> </td>
+                    <td>  <?= date_format(new DateTime($t['clock_in']), 'd/m/Y H:i:s'); ?> </td>
                     <td>  <?= $t['first_name'] ?> </td>
                     <td>  <?= $t['note'] ?> </td>
                     <td>

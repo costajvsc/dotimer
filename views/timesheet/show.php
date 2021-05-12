@@ -24,7 +24,7 @@
         <h5 class="font-weight-normal mb-3"><?= $time_sheet["first_name"] ?> <?= $time_sheet["last_name"] ?></h5>
 
         <h4>Clock in</h4>
-        <h5 class="font-weight-normal mb-3"><?= $time_sheet["clock_in"] ?></h5>
+        <h5 class="font-weight-normal mb-3"> <?= date_format(new DateTime($time_sheet['clock_in']), 'd/m/Y H:i:s'); ?>  </h5>
 
         <h4>Note</h4>
         <h5 class="font-weight-normal mb-3"><?= $time_sheet["note"] ?></h5>

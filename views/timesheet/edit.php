@@ -19,15 +19,15 @@
     </header>
 
     <main class="container">
-        <h1>Create employe</h1>
+        <h1>Edit Time Sheet #<?= $time_sheet["id_employe"] ?></h1>
         <form method="post" action="/dotimer/controllers/timesheet/update.php">
             <input type="hidden" name="id_time_sheet" value="<?= $time_sheet["id_time_sheet"] ?>">
             <div class="row">
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                     <div class="form-group">
                         <label for="id_employe">Employe</label>
-                        <small>(ID: <?= $time_sheet["id_employe"] ?>)</small>
                         <input list="employes" class="form-control" id="id_employe" name="id_employe" placeholder="Joe" required>
+                        <small class="form-text text-muted">(ID: <?= $time_sheet["id_employe"] ?>) | <?= $time_sheet["first_name"] ?> <?= $time_sheet["last_name"] ?></small>
                         <?php 
                             include_once('../../controllers/employe/index.php');
                             $employes = index();

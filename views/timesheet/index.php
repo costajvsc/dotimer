@@ -39,7 +39,7 @@
                 <tr>
                     <th scope="row">  <?= $t['id_time_sheet'] ?> </th>
                     <td>  <?= $t['clock_in'] ?> </td>
-                    <td>  <?= $t['id_employe'] ?> </td>
+                    <td>  <?= $t['first_name'] ?> </td>
                     <td>  <?= $t['note'] ?> </td>
                     <td>
                         <form class="d-inline" method="post" action="/dotimer/controllers/timesheet/show.php">

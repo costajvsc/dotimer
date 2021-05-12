@@ -18,10 +18,10 @@
     </header>
 
     <main class="container">
-        <h1>Show Time Sheet <?= $time_sheet["id_time_sheet"] ?></h1>
+        <h1>Show Time Sheet #<?= $time_sheet["id_time_sheet"] ?></h1>
 
-        <h4>Employe</h4>
-        <h5 class="font-weight-normal mb-3"><?= $time_sheet["id_employe"] ?></h5>
+        <h4>Employe #<?= $time_sheet["id_employe"] ?></h4>
+        <h5 class="font-weight-normal mb-3"><?= $time_sheet["first_name"] ?> <?= $time_sheet["last_name"] ?></h5>
 
         <h4>Clock in</h4>
         <h5 class="font-weight-normal mb-3"><?= $time_sheet["clock_in"] ?></h5>

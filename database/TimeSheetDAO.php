@@ -16,7 +16,9 @@ class TimeSheetDAO extends DAO
 
     public function retrieve()
     {
-        $query = "SELECT * FROM time_sheet";
+        $query = "SELECT 
+                    time_sheet.*, employes.first_name, employes.last_name
+                    FROM time_sheet JOIN employes ON time_sheet.id_employe = employes.id_employe";
 
         $time_sheet = array();
         $result = mysqli_query($this->connection->getConnection(), $query);
@@ -30,7 +32,10 @@ class TimeSheetDAO extends DAO
 
     public function find(int $id_time_sheet)
     {
-        $query = "SELECT * FROM time_sheet WHERE id_time_sheet = '{$id_time_sheet}'";
+        $query = "SELECT 
+                    time_sheet.*, employes.first_name, employes.last_name
+                    FROM time_sheet JOIN employes ON time_sheet.id_employe = employes.id_employe
+                    WHERE id_time_sheet = '{$id_time_sheet}'";
         
         $result = mysqli_query($this->connection->getConnection(), $query);
         return mysqli_fetch_assoc($result);

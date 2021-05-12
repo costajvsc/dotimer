@@ -95,7 +95,7 @@
         </form>
         
     </main>
-        <?php require_once('../layout/_head.php'); ?>    
+        
     <footer>
         <?php require_once('../layout/_footer.php'); ?>
     </footer>

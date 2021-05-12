@@ -18,7 +18,7 @@
     </header>
 
     <main class="container">
-        <h1>Delete Time Sheet <?= $time_sheet["id_time_sheet"] ?></h1>
+        <h1>Delete Time Sheet #<?= $time_sheet["id_time_sheet"] ?></h1>
 
         <h3>Do you want delete this time sheet? All data <span class="text-danger">are will lose</span>.</h3>
 
@@ -42,7 +42,7 @@
         </div>
 
     </main>
-        <?php require_once('../layout/_head.php'); ?>    
+        
     <footer>
         <?php require_once('../layout/_footer.php'); ?>
     </footer>

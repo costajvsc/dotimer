@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require_once('../layout/_head.php'); ?>
-    <title>Dotimer - TimeSheet</title>
+    <title>Dotimer - Users</title>
 </head>
 <body>
     <header>
@@ -14,44 +14,42 @@
 
     <main class="container">
         <?php require_once('../layout/_message.php'); ?>
-        <h1>Time sheet</h1>
+        <h1>Users</h1>
         <div class="d-flex justify-content-end mb-4">
-            <a href="/dotimer/views/timesheet/create.php" class="btn btn-outline-dark"> <i class="fas fa-stopwatch"></i> Create TimeSheet</a>
+            <a href="/dotimer/views/user/create.php" class="btn btn-outline-dark"> <i class="fas fa-user-plus"></i> Create user</a>
         </div>
 
         <?php 
-            include_once('../../controllers/timesheet/index.php');
-            $time_sheet = index();
+            include_once('../../controllers/user/index.php');
+            $users = index();
         ?> 
         <table class="table text-center">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Clock in</th>
-                    <th scope="col">Employe</th>
-                    <th scope="col">Note</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Password</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
 
-                <?php foreach($time_sheet as $t): ?>  
+                <?php foreach($users as $u): ?>  
                 <tr>
-                    <th scope="row">  <?= $t['id_time_sheet'] ?> </th>
-                    <td>  <?= date_format(new DateTime($t['clock_in']), 'd/m/Y H:i:s'); ?> </td>
-                    <td>  <?= $t['first_name'] ?> </td>
-                    <td>  <?= $t['note'] ?> </td>
+                    <th scope="row">  <?= $u['id_user'] ?> </th>
+                    <td> <?= $u['email'] ?> </td>
+                    <td>••••••••</td>
                     <td>
-                        <form class="d-inline" method="post" action="/dotimer/controllers/timesheet/show.php">
-                            <input type="hidden" name="id_time_sheet" value="<?= $t['id_time_sheet'] ?>">
+                        <form class="d-inline" method="post" action="/dotimer/controllers/user/show.php">
+                            <input type="hidden" name="id_user" value="<?= $u['id_user'] ?>">
                             <button type="submit" class="btn p-0"> <i class="fas fa-eye mr-2 text-info"></i> </button>
                         </form>
-                        <form class="d-inline" method="post" action="/dotimer/controllers/timesheet/edit.php">
-                            <input type="hidden" name="id_time_sheet" value="<?= $t['id_time_sheet'] ?>"> 
+                        <form class="d-inline" method="post" action="/dotimer/controllers/user/edit.php">
+                            <input type="hidden" name="id_user" value="<?= $u['id_user'] ?>"> 
                             <button type="submit" class="btn p-0"> <i class="fas fa-edit mr-2 text-warning"></i> </button>
                         </form>
-                        <form class="d-inline" method="post" action="/dotimer/controllers/timesheet/delete.php">
-                            <input type="hidden" name="id_time_sheet" value="<?= $t['id_time_sheet'] ?>"> 
+                        <form class="d-inline" method="post" action="/dotimer/controllers/user/delete.php">
+                            <input type="hidden" name="id_user" value="<?= $u['id_user'] ?>"> 
                             <button type="submit" class="btn p-0"> <i class="fas fa-trash mr-2 text-danger"></i> </button>
                         </form>
                         

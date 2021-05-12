@@ -24,6 +24,11 @@ CREATE TABLE time_sheet(
     FOREIGN KEY(id_employe) REFERENCES employes(id_employe)
 );
 
+CREATE TABLE users(
+    id_user INT PRIMARY KEY AUTO_INCREMENT,
+    email VARCHAR(45) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
 
 /*
     Data insert to test your database
@@ -45,3 +50,5 @@ INSERT INTO employes(
 ('25011708497', '1Z5KZ9U3' ,'Bárbara', 'Nicole Ribeiro', '5569996012338', 'barbara.nribeiro@gmail.com', '55A5E9E78207B4DF8699D60886FA070079463547B095D1A05BC719BB4E6CD251', '32.90', '5390.00'),
 ('07518192985', 'Q13FU7G5' ,'Evelyn', 'Sara da Silva', '5569996012338', 'evelynsaradasilva@dev.com', '55A5E9E78207B4DF8699D60886FA070079463547B095D1A05BC719BB4E6CD251', '17.50', '2540.00'),
 ('82236355009', 'S1J63CD2' ,'Julio', ' Gonçalves', '5561987572455', 'juliogoncalves@gruporedis.net', '55A5E9E78207B4DF8699D60886FA070079463547B095D1A05BC719BB4E6CD251', '54.33', '9310.50');
+
+INSERT INTO users(email, password) VALUES ('admin@dotimer.com.br', 'senha123');

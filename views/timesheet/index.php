@@ -14,7 +14,7 @@
 
     <main class="container">
         <?php require_once('../layout/_message.php'); ?>
-        <h1>Timesheet</h1>
+        <h1>Time sheet</h1>
         <div class="d-flex justify-content-end mb-4">
             <a href="/dotimer/views/timesheet/create.php" class="btn btn-outline-dark"> <i class="fas fa-stopwatch"></i> Create TimeSheet</a>
         </div>

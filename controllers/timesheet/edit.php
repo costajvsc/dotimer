@@ -10,6 +10,6 @@ session_start();
 
 $_SESSION["time_sheet"] = $result;
 
-header('Location: http://localhost/dotimer/views/timesheet/show.php');
+header('Location: http://localhost/dotimer/views/timesheet/edit.php');
 
 ?>

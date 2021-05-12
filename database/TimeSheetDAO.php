@@ -39,10 +39,12 @@ class TimeSheetDAO extends DAO
     public function update(TimeSheet $time_sheet)
     {
         $id_time_sheet = $time_sheet->getIDTimeSheet();
+        $id_employe = $time_sheet->getIDEmploye();
         $clock_in = $time_sheet->getClockIn();
         $note = $time_sheet->getNote();
 
-        $query = "UPDATE INTO time_sheet(clock_in, note) VALUES ('{$clock_in}', '{$note}') WHERE id_time_sheet = {$id_time_sheet}";
+        $query = "UPDATE time_sheet SET id_employe = '{$id_employe}', clock_in = '{$clock_in}', note = '{$note}' WHERE id_time_sheet = '{$id_time_sheet}'";
+
         return mysqli_query($this->connection->getConnection(), $query);
     }
 

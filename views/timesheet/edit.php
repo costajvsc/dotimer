@@ -5,7 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require_once('../layout/_head.php'); ?>
-    <title>Dotimer - Create TimeSheet</title>
+    <title>Dotimer - Edit TimeSheet</title>
+
+    <?php 
+        session_start();
+        $time_sheet = $_SESSION["time_sheet"];
+    ?>
+
 </head>
 <body>
     <header>
@@ -13,12 +19,14 @@
     </header>
 
     <main class="container">
-        <h1>Create Time Sheet</h1>
-        <form method="post" action="/dotimer/controllers/timesheet/create.php">
+        <h1>Create employe</h1>
+        <form method="post" action="/dotimer/controllers/timesheet/update.php">
+            <input type="hidden" name="id_time_sheet" value="<?= $time_sheet["id_time_sheet"] ?>">
             <div class="row">
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                     <div class="form-group">
                         <label for="id_employe">Employe</label>
+                        <small>(ID: <?= $time_sheet["id_employe"] ?>)</small>
                         <input list="employes" class="form-control" id="id_employe" name="id_employe" placeholder="Joe" required>
                         <?php 
                             include_once('../../controllers/employe/index.php');
@@ -35,13 +43,13 @@
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                     <div class="form-group">
                         <label for="clock_in">Clock in</label>
-                        <input type="datetime-local" class="form-control" id="clock_in" name="clock_in" required>
+                        <input type="datetime-local" class="form-control" id="clock_in" name="clock_in" value="<?= $time_sheet["clock_in"]?>" required>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="form-group">
                         <label for="note">Note</label>
-                        <textarea class="form-control" id="note" name="note" rows="3"></textarea>
+                        <textarea class="form-control" id="note" name="note" rows="3"><?= $time_sheet["note"]?></textarea>
                     </div>
                 </div>
             </div>
@@ -56,5 +64,11 @@
     <footer>
         <?php require_once('../layout/_footer.php'); ?>
     </footer>
+
+    <script>
+        var clock_in = new Date("<?= $time_sheet["clock_in"]?>")
+        clock_in.setMinutes(clock_in.getMinutes() - clock_in.getTimezoneOffset())
+        document.getElementById('clock_in').value = clock_in.toISOString().slice(0,16)
+    </script>
 </body>
 </html>

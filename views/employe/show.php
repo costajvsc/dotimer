@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require_once('../layout/_head.php'); ?>
-    <title>Dotimer - Edit Employe</title>
+    <title>Dotimer - Show Employe</title>
 
     <?php 
         session_start();
@@ -18,7 +18,7 @@
     </header>
 
     <main class="container">
-        <h1>Show employe</h1>
+        <h1>Show employe <?= $employe["id_employe"] ?></h1>
 
         <h4>First name</h4>
         <h5 class="font-weight-normal mb-3"><?= $employe["first_name"] ?></h5>

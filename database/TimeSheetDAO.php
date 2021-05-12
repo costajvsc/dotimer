@@ -32,8 +32,8 @@ class TimeSheetDAO extends DAO
     {
         $query = "SELECT * FROM time_sheet WHERE id_time_sheet = '{$id_time_sheet}'";
         
-        $result = mysqli_query($this->connection->getConnection());
-        return mysql_fetch_assoc($result);
+        $result = mysqli_query($this->connection->getConnection(), $query);
+        return mysqli_fetch_assoc($result);
     }
 
     public function update(TimeSheet $time_sheet)

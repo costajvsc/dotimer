@@ -14,6 +14,25 @@ class TimeSheetDAO extends DAO
         return mysqli_query($this->connection->getConnection(), $query);
     }
 
+    private function getNoteType(string $id_employe) : string {
+        $today = date("Y-m-d");
+        
+        $query = "SELECT COUNT(*) FROM time_sheet WHERE id_employe = '{$id_employe}' AND clock_in LIKE '{$today}%'";
+         
+        $result = mysqli_query($this->connection->getConnection(), $query);
+        $result = mysqli_fetch_assoc($result);
+        return $result["COUNT(*)"];
+    }
+
+    public function clock_in(string $id_employe) 
+    {
+        $clock_in = date("Y-m-d H:i:s");
+        $note = $this->getNoteType($id_employe) % 2 == 0 ? "Work in" : "Work out";
+
+        $query = "INSERT INTO time_sheet(clock_in, note, id_employe) VALUES ('{$clock_in}', '{$note}', '{$id_employe}')";
+        return mysqli_query($this->connection->getConnection(), $query);
+    }
+
     public function retrieve()
     {
         $query = "SELECT 

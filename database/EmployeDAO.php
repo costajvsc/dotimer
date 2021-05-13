@@ -44,6 +44,14 @@ class EmployeDAO extends DAO
         return mysqli_fetch_assoc($result);
     }
 
+    public function findByCardID(string $card_id)
+    {
+        $query = "SELECT * FROM employes WHERE card_id = '{$card_id}'";
+       
+        $result = mysqli_query($this->connection->getConnection(), $query);
+        return mysqli_fetch_assoc($result);
+    }
+
     public function update(Employe $employe)
     {
         $id_employe = $employe->getIDEmploye();

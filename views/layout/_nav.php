@@ -12,6 +12,9 @@
                     <a class="nav-link" href="/dotimer/views/timesheet/">Time Sheets</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/dotimer/views/doors/">Doors</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/dotimer/views/user">Users</a>
                 </li>
             </ul>

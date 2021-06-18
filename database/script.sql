@@ -30,9 +30,22 @@ CREATE TABLE users(
     password VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE doors(
+    id_door INT PRIMARY KEY AUTO_INCREMENT,
+    door_name VARCHAR(45) NOT NULL
+);
+
+CREATE TABLE door_guards(
+    id_door_guards INT PRIMARY KEY AUTO_INCREMENT,
+    id_employe INT,
+    id_door INT,
+    FOREIGN KEY(id_employe) REFERENCES employes(id_employe),
+    FOREIGN KEY(id_door) REFERENCES doors(id_door)
+);
+
 /*
     Data insert to test your database
-    You can't add this data in yout database
+    it is not necessary add this data in yout database
 */
 
 INSERT INTO employes(

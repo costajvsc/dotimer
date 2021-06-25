@@ -79,5 +79,19 @@ class DoorGuardDAO extends DAO
         $query = "DELETE FROM door_guards WHERE id_door_guards = '{$id_door_guard}'";
         return mysqli_query($this->connection->getConnection(), $query);
     }
+
+    public function getGuard($card_id, $id_door)
+    {
+        $query = "SELECT 
+                        * 
+                    FROM door_guards 
+                    JOIN doors on doors.id_door = door_guards.id_door
+                    JOIN employes on employes.id_employe = door_guards.id_employe
+                    WHERE doors.id_door = '{$id_door}' AND employes.card_id = '{$card_id}'";
+        
+        $result = mysqli_query($this->connection->getConnection(), $query);
+        return mysqli_fetch_assoc($result);
+    }
 }
+
 ?>

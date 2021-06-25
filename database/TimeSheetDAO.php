@@ -27,7 +27,7 @@ class TimeSheetDAO extends DAO
     public function clock_in(string $id_employe) 
     {
         $clock_in = date("Y-m-d H:i:s");
-        $note = $this->getNoteType($id_employe) % 2 == 0 ? "Work in" : "Work out";
+        $note = $this->getNoteType($id_employe) % 2 == 0 ? "Entrada" : "Saída";
 
         $query = "INSERT INTO time_sheet(clock_in, note, id_employe) VALUES ('{$clock_in}', '{$note}', '{$id_employe}')";
         return mysqli_query($this->connection->getConnection(), $query);
@@ -38,6 +38,24 @@ class TimeSheetDAO extends DAO
         $query = "SELECT 
                     time_sheet.*, employes.first_name, employes.last_name
                     FROM time_sheet JOIN employes ON time_sheet.id_employe = employes.id_employe";
+
+        $time_sheet = array();
+        $result = mysqli_query($this->connection->getConnection(), $query);
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            array_push($time_sheet, $row);
+        }
+        
+        return $time_sheet;
+    }
+
+    public function retrieveDaily()
+    {
+        $query = "SELECT 
+                    time_sheet.*, employes.first_name, employes.last_name
+                    FROM time_sheet JOIN employes ON time_sheet.id_employe = employes.id_employe
+                    WHERE clock_in >= DATE(NOW())
+                    ORDER BY id_time_sheet";
 
         $time_sheet = array();
         $result = mysqli_query($this->connection->getConnection(), $query);

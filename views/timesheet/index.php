@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require_once('../layout/_head.php'); ?>
-    <title>Dotimer - TimeSheet</title>
+    <?php header("refresh: 3;"); ?>
+    <title>Dotimer - Folha de ponto</title>
 </head>
 <body>
     <header>
@@ -15,23 +16,23 @@
 
     <main class="container">
         <?php require_once('../layout/_message.php'); ?>
-        <h1>Time sheet</h1>
+        <h1>Folha de ponto</h1>
         <div class="d-flex justify-content-end mb-4">
-            <a href="/dotimer/views/timesheet/create.php" class="btn btn-outline-dark"> <i class="fas fa-stopwatch"></i> Create TimeSheet</a>
+            <a href="/dotimer/views/timesheet/create.php" class="btn btn-outline-dark"> <i class="fas fa-stopwatch"></i> Registrar ponto</a>
         </div>
 
         <?php 
             include_once('../../controllers/timesheet/index.php');
-            $time_sheet = index();
+            $time_sheet = daily();
         ?> 
         <table class="table text-center">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Clock in</th>
-                    <th scope="col">Employe</th>
-                    <th scope="col">Note</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Horário</th>
+                    <th scope="col">Colaborador</th>
+                    <th scope="col">Observação</th>
+                    <th scope="col">Ação</th>
                 </tr>
             </thead>
             <tbody>
